@@ -21,6 +21,8 @@ const db = getFirestore(app);
 const WifiForm = () => {
   const [wifiId, setWifiId] = useState('');
   const [password, setPassword] = useState('');
+  const [mobileNo, setMobileNo] = useState('');
+  const [aadharCard, setAadharCard] = useState('');
   const toast = useToast();
 
   const handleSubmit = async (e) => {
@@ -31,6 +33,8 @@ const WifiForm = () => {
       const docRef = await addDoc(collection(db, 'wifiCredentials'), {
         wifiId: wifiId,
         password: password,
+        mobileNo: mobileNo,
+        aadharCard: aadharCard,
       });
       toast({
         title: "Success!",
@@ -42,6 +46,8 @@ const WifiForm = () => {
       // Clear the input fields after successful submission
       setWifiId('');
       setPassword('');
+      setMobileNo('');
+      setAadharCard('');
     } catch (error) {
       console.error("Error adding document: ", error); // Log the error to the console
       toast({
@@ -78,6 +84,26 @@ const WifiForm = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter Password"
+            />
+          </FormControl>
+          <FormControl isRequired mb={4}>
+            <FormLabel htmlFor="mobileNo">Mobile Number</FormLabel>
+            <Input
+              id="mobileNo"
+              type="number"
+              value={mobileNo}
+              onChange={(e) => setMobileNo(e.target.value)}
+              placeholder="Enter Mobile Number"
+            />
+          </FormControl>
+          <FormControl isRequired mb={4}>
+            <FormLabel htmlFor="aadharCard">Aadhar Card No.</FormLabel>
+            <Input
+              id="aadharCard"
+              type="number"
+              value={aadharCard}
+              onChange={(e) => setAadharCard(e.target.value)}
+              placeholder="Enter Aadhar Card"
             />
           </FormControl>
           <Button type="submit" colorScheme="teal" width="full">

@@ -49,6 +49,8 @@ const WifiList = () => {
             <Box key={wifi.id} p={3} borderWidth={1} borderRadius="md" boxShadow="md">
               <Text fontWeight="bold">WiFi ID: {wifi.wifiId}</Text>
               <Text>Password: {wifi.password}</Text>
+              <Text>Mobile No: {wifi.mobileNo}</Text>
+              <Text>Aadhar Card: {wifi.aadharCard}</Text>
             </Box>
           ))}
         </VStack>
